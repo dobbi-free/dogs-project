@@ -1,0 +1,33 @@
+.background{
+    max-width: 680px;
+    width: 100%;
+
+    background: #FBE0DC;
+    border-radius: 20px;
+ }
+
+.img{
+    position: absolute;
+    right: -20px;
+    top: -100px;
+    width: 100%;
+}
+
+
+.wrapp{
+    max-height: 92vh;
+    height: 100%;
+    position: relative;
+    max-width: 775px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+
+@media (max-width: 992px) {
+    .img{
+        top: 0;
+    }
+}
