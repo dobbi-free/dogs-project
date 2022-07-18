@@ -8,7 +8,7 @@ import { GlobalContext } from "../../context/context";
 import Preloader from "../Preloader/Preloader";
 import { breedsAPI } from "../../api/api";
 
-const FindBreeds = ({ notFound }) => {
+const FindBreeds = () => {
   const { store, constants } = useContext(GlobalContext);
   const [limit, setLimit] = useState({
     count: 10,
