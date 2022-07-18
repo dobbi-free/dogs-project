@@ -10,11 +10,11 @@ import NotItemFound from "../common/NotItemFound";
 
 const Favorites = () => {
   const { store, constants } = useContext(GlobalContext);
+
   const getFavorites = async () => {
     store.dispatch({ type: constants.SET_LOADING, isLoading: true });
     const data = await breedsAPI.getFavorites();
     if (data.length <= 0) {
-
       store.dispatch({ type: constants.SET_NOT_FOUND, notFound: true });
     } else {
       store.dispatch({ type: constants.SET_FAVORITES_DATA, favorites: data });
@@ -22,6 +22,7 @@ const Favorites = () => {
     }
     store.dispatch({ type: constants.SET_LOADING, isLoading: false });
   };
+
   const [result, setResult] = useState([]);
 
   const deleteFavorite = async (id, image_id) => {
@@ -41,6 +42,7 @@ const Favorites = () => {
   useEffect(() => {
     getFavorites();
   }, [result]);
+
   return (
     <div className={common.wrapp}>
       <SearchBlock />
@@ -88,7 +90,7 @@ const Favorites = () => {
           {!store.state.notFound ? (
             <div className={style.result_wrapp}>
               {result.map((item) => (
-                <div key={item.id} className={style.result_item}>
+                <div key={item.id + item.image_id} className={style.result_item}>
                   <div className={style.result_date}>{item.date}</div>
                   <p className={style.result_info}>
                     Image ID: <span>{item.image_id}</span> was removed from

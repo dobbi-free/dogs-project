@@ -9,13 +9,16 @@ import BurgerButton from "./BurgerButton";
 
 const SearchBlock = () => {
   const { store, constants } = useContext(GlobalContext);
+
   const navigate = useNavigate();
+
   const getSearchData = async (limit, breedId) => {
     const data = await breedsAPI.getBreedsData(limit, breedId);
     navigate("/breeds/search");
     store.dispatch({ type: constants.SET_SEARCH_DATA, searchData: data });
     store.dispatch({ type: constants.SET_PAST });
   };
+
   const getBreedsByName = async (name) => {
     store.dispatch({ type: constants.SET_LOADING, isLoading: true });
     if (name) {

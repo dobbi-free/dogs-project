@@ -28,6 +28,7 @@ const Uploader = () => {
     }
     store.dispatch({ type: constants.SET_LOADING, isLoading: false });
   };
+
   useEffect(() => {
     if (photo) {
       const reader = new FileReader();
@@ -39,6 +40,7 @@ const Uploader = () => {
       setPreview(null);
     }
   }, [photo, loadResult, preview]);
+
   return (
     <div className={style.upload_wrapp}>
       <div

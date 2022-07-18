@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 
 const LikesDislikes = () => {
   const { store, constants } = useContext(GlobalContext);
+
   const { rating } = useParams();
 
   const getVote = async () => {

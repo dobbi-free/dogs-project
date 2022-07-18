@@ -5,9 +5,8 @@ const Home = () => {
   return (
     <div className={style.wrapp}>
       <div className={style.background}>
-          <img className={style.img} src={background}  alt={""}/>
+        <img className={style.img} src={background} alt={""} />
       </div>
-
     </div>
   );
 };

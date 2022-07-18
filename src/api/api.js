@@ -3,7 +3,7 @@ import * as axios from "axios";
 const instance = axios.create({
   baseURL: "https://api.thedogapi.com/v1/",
   headers: {
-    "x-api-key": "1b8ed6f6-0352-4e0a-8af8-df26c9db6d42",
+    "x-api-key": "21dc5fb0-8f98-4453-bf70-45856bbf0da5",
   },
 });
 

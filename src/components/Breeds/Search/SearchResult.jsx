@@ -14,7 +14,6 @@ const SearchResult = () => {
       <div className={style.panel_wrapp}>
         <BackBlock title={"SEARCH"} />
       </div>
-
       <div className={style.content_block}>
         {store.state.showResult && (
           <p className={style.search_name}>

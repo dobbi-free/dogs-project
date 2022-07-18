@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Outlet, useParams } from "react-router-dom";
 import common from "../../common-style/Common.module.css";
 import SearchBlock from "../Breeds/Search/SearchBlock";

@@ -17,7 +17,9 @@ const Layout = () => {
         {isTablet && <BurgerMenu />}
         {isTablet && <Outlet />}
       </div>
-      <div className={style.right_section}><Outlet /></div>
+      <div className={style.right_section}>
+        <Outlet />
+      </div>
     </div>
   );
 };

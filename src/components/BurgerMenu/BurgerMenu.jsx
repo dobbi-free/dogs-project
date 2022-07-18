@@ -7,11 +7,14 @@ import { useMediaQuery } from "react-responsive";
 
 const BurgerMenu = () => {
   const { store, constants } = useContext(GlobalContext);
+
   const tablet = useMediaQuery({
     minWidth: 586,
     maxWidth: 768,
   });
+
   const mobile = useMediaQuery({ maxWidth: 585 });
+
   return (
     <div
       className={

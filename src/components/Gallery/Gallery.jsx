@@ -10,6 +10,7 @@ import Preloader from "../Preloader/Preloader";
 
 const Gallery = () => {
   const { store, constants } = useContext(GlobalContext);
+
   const [searchOption, setSearchOption] = useState({
     order: "RANDOM",
     breedId: "",
@@ -18,6 +19,7 @@ const Gallery = () => {
   });
   const [refresh, setRefresh] = useState(false);
   const [modalMode, setModalMode] = useState(false);
+
   const getBreedsGallery = async (searchOption) => {
     store.dispatch({ type: constants.SET_LOADING, isLoading: true });
     const data = await breedsAPI.getBreedsGallery(searchOption);
@@ -41,6 +43,7 @@ const Gallery = () => {
   useEffect(() => {
     getBreedsGallery(searchOption);
   }, [searchOption, refresh]);
+
   return (
     <div className={common.wrapp}>
       <SearchBlock />

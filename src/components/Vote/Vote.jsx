@@ -22,7 +22,7 @@ const Vote = () => {
         </div>
         <div className={style.result_wrapp}>
           {actions.map((item) => (
-            <div key={item.id} className={style.result_item}>
+            <div key={item.id + item.image_id} className={style.result_item}>
               <div className={style.result_item_wrapp}>
                 {tablet && <div className={style.result_date}>{item.date}</div>}
                 <p className={style.result_info}>
