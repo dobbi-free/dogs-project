@@ -76,7 +76,7 @@ const LeftSection = () => {
         </NavLink>
       </div>
       <h1 className={style.title}>Hi intern!</h1>
-      <p className={style.subtitle}>Welcome to MSI 2021 Front-end test</p>
+      <p className={style.subtitle}>Welcome to MSI 2022 Front-end test</p>
       <h3 className={style.menu_title}>Lets start using The Dogs API</h3>
       {tablet && <MenuItems />}
       {mobile && <MenuButtons />}
