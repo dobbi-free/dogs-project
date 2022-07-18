@@ -4,9 +4,13 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import { createRoot } from 'react-dom/client';
 import { GlobalProvider } from "./context/context";
 
-ReactDOM.render(
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+
+root.render(
   <React.StrictMode>
     <BrowserRouter>
       <GlobalProvider>
@@ -14,7 +18,6 @@ ReactDOM.render(
       </GlobalProvider>
     </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

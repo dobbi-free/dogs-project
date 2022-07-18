@@ -9,7 +9,7 @@ const BlockNav = () => {
   const [state, setState] = useState([
     {
       isActive: false,
-      linkTo: "/likes",
+      linkTo: "/rating/1",
       src: likes_icon,
     },
     {
@@ -19,7 +19,7 @@ const BlockNav = () => {
     },
     {
       isActive: false,
-      linkTo: "/dislikes",
+      linkTo: "/rating/0",
       src: dislikes_icon,
     },
   ]);

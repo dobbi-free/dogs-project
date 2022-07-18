@@ -26,7 +26,7 @@ const VoteImage = ({ actions, setActions }) => {
         const newObject = {
           date: h.toLocaleTimeString().slice(0, -3),
           image_id: imageId,
-          action: "Likes",
+          action: "Rating",
           svg: like_svg,
         };
         actions.unshift(newObject);

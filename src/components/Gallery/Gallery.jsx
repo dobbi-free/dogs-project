@@ -13,7 +13,7 @@ const Gallery = () => {
   const [searchOption, setSearchOption] = useState({
     order: "RANDOM",
     breedId: "",
-    type: ["jpg", "png", "gif"],
+    type: "['jpg', 'png', 'gif']",
     limit: 5,
   });
   const [refresh, setRefresh] = useState(false);
@@ -105,13 +105,13 @@ const Gallery = () => {
                 }}
                 className={style.select}
               >
-                <option className={style.option} value={["jpg", "png", "gif"]}>
+                <option className={style.option} value="['jpg', 'png', 'gif']">
                   All
                 </option>
-                <option className={style.option} value={["jpg", "png"]}>
+                <option className={style.option} value="['jpg', 'png']">
                   Static
                 </option>
-                <option className={style.option} value={"gif"}>
+                <option className={style.option} value="gif">
                   Animated
                 </option>
               </select>

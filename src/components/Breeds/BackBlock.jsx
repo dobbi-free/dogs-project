@@ -1,16 +1,12 @@
 import style from "./Breeds.module.css";
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const BackBlock = ({ title }) => {
-  // const { store, constants } = useContext(GlobalContext);
-  // const goBack = () => {
-  //   store.dispatch({ type: constants.UNDO });
-  // };
-  const history = useHistory();
+  const navigate = useNavigate();
   return (
     <div className={style.back_block}>
-      <button className={style.button_back} onClick={() => history.goBack()}>
+      <button className={style.button_back} onClick={() => navigate(-1)}>
         <svg
           width="12"
           height="20"

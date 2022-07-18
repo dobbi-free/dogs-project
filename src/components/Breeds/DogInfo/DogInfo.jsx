@@ -13,13 +13,19 @@ import PreloaderImage from "../../Preloader/PreloaderImage";
 const DogInfo = () => {
   const { store, constants } = useContext(GlobalContext);
   const { breedId } = useParams();
+
   const getBreed = async () => {
     store.dispatch({ type: constants.SET_LOADING, isLoading: true });
     const limit = 10;
     const data = await breedsAPI.getBreedsData(limit, breedId);
-    store.dispatch({ type: constants.SET_BREED_INFO, breedInfo: data });
+    if (data.length) {
+      store.dispatch({ type: constants.SET_BREED_INFO, breedInfo: data });
+    } else {
+      store.dispatch({ type: constants.SET_NOT_FOUND, notFound: true });
+    }
     store.dispatch({ type: constants.SET_LOADING, isLoading: false });
   };
+
   useEffect(() => {
     getBreed();
   }, []);
@@ -32,6 +38,7 @@ const DogInfo = () => {
     slidesToScroll: 1,
     arrows: false,
   };
+
   return (
     <div>
       <div className={common.panel_wrap}>
@@ -40,58 +47,62 @@ const DogInfo = () => {
           {store.state.breedInfo[0]?.breeds[0].id}
         </div>
       </div>
-      <div className={style.main_block}>
-        {store.state.isLoading ? (
-          <PreloaderImage />
-        ) : (
-          <Slider {...settings}>
-            {store.state.breedInfo.map((item) => (
-              <div className={style.img_block}>
-                <img className={style.img} src={item?.url} alt="" />
+      {!store.state.notFound && (
+        <>
+          <div className={style.main_block}>
+            {store.state.isLoading ? (
+              <PreloaderImage />
+            ) : (
+              <Slider {...settings}>
+                {store.state.breedInfo.map((item) => (
+                  <div className={style.img_block}>
+                    <img className={style.img} src={item?.url} alt="" />
+                  </div>
+                ))}
+              </Slider>
+            )}
+          </div>
+          <div className={style.info_block}>
+            <div className={style.name_block}>
+              <div className={style.name}>
+                {store.state.breedInfo[0]?.breeds[0].name}
               </div>
-            ))}
-          </Slider>
-        )}
-      </div>
-      <div className={style.info_block}>
-        <div className={style.name_block}>
-          <div className={style.name}>
-            {store.state.breedInfo[0]?.breeds[0].name}
-          </div>
-        </div>
-        <h4 className={style.bred_for}>
-          {store.state.breedInfo[0]?.breeds[0].bred_for}
-        </h4>
-        <div className={style.main_info}>
-          <div className={style.block_wrapp}>
-            <h5 className={style.title_value}>Temperament: </h5>
-            <p className={style.value}>
-              {store.state.breedInfo[0]?.breeds[0].temperament}
-            </p>
-          </div>
-          <div className={style.block_wrapp}>
-            <div className={style.info_wrapp}>
-              <h5 className={style.title_value}>Height: </h5>
-              <p className={style.value}>
-                {store.state.breedInfo[0]?.breeds[0].height.metric} cm at the
-                withers
-              </p>
             </div>
-            <div className={style.info_wrapp}>
-              <h5 className={style.title_value}>Weight: </h5>
-              <p className={style.value}>
-                {store.state.breedInfo[0]?.breeds[0].weight.metric} kgs
-              </p>
-            </div>
-            <div className={style.info_wrapp}>
-              <h5 className={style.title_value}>Life span: </h5>
-              <p className={style.value}>
-                {store.state.breedInfo[0]?.breeds[0].life_span} years
-              </p>
+            <h4 className={style.bred_for}>
+              {store.state.breedInfo[0]?.breeds[0].bred_for}
+            </h4>
+            <div className={style.main_info}>
+              <div className={style.block_wrapp}>
+                <h5 className={style.title_value}>Temperament: </h5>
+                <p className={style.value}>
+                  {store.state.breedInfo[0]?.breeds[0].temperament}
+                </p>
+              </div>
+              <div className={style.block_wrapp}>
+                <div className={style.info_wrapp}>
+                  <h5 className={style.title_value}>Height: </h5>
+                  <p className={style.value}>
+                    {store.state.breedInfo[0]?.breeds[0].height.metric} cm at
+                    the withers
+                  </p>
+                </div>
+                <div className={style.info_wrapp}>
+                  <h5 className={style.title_value}>Weight: </h5>
+                  <p className={style.value}>
+                    {store.state.breedInfo[0]?.breeds[0].weight.metric} kgs
+                  </p>
+                </div>
+                <div className={style.info_wrapp}>
+                  <h5 className={style.title_value}>Life span: </h5>
+                  <p className={style.value}>
+                    {store.state.breedInfo[0]?.breeds[0].life_span} years
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };
